@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notice Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+
+    <div class="container mt-5">
+
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post">
+
+            {% csrf_token %}
+            <h2>ADD NOTICE</h2>
+            <hr>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Notice Name</label>
+              <input  name="notice_name" required type="text" class="form-control" >
+              
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1"  class="form-label">Notice Description</label>
+              <textarea class="form-control"name="notice_description" required placeholder="Leave a notice here" id="floatingTextarea"></textarea>
+            </div>
+
+            
+
+            <button type="submit" class="btn btn-success">Add Notice</button>
+            
+        </form>
+           <hr>
+          <div class="mt-5">
+            <div class="mx-auto col-6">
+              <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Search Notice</label>
+                <input  name="search"   type="text" class="form-control" >
+
+                
+              </div>
+              <button type="submit" class="btn btn-primary">Search Notice</button><br><br>
+            </form>
+              
+            </div>
+          </div> 
+
+          
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Notice Name</th>
+                <th scope="col">Notice Description</th>
+                <th scope="col">Actions</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+                {% for notice in notices %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{notice.notice_name}}</td>
+                <td>{{notice.notice_description}}</td>
+                <td>
+                  <a href="/delete-notice/{{notice.id}}" class="btn btn-danger m-2">Delete</a>
+                  <a href="/update-notice/{{notice.id}}" class="btn btn-success">Update</a>
+                </td>
+                
+              </tr>
+             {% endfor %}
+            </tbody>
+          </table>
+
+
+
+
+    </div>    
+    
+</body>
+</html>
+
+
+

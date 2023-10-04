@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notice Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+
+    <div class="container mt-5">
+
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post">
+            {% csrf_token %}
+            <h2>UPDATE NOTICE</h2>
+            <hr>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Notice Name</label>
+              <input  name="notice_name" value="{{notice.notice_name}}" required type="text" class="form-control" >
+              
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1"  class="form-label">Notice Description</label>
+              <textarea class="form-control"name="notice_description" value="{{notice.notice_description}}"  required placeholder="Leave a notice here" id="floatingTextarea">{{notice.notice_description}}</textarea>
+            </div>
+
+            
+
+            <button type="submit" class="btn btn-success">Update</button>
+          </form>
+          <br>
+
+          
+
+         
+
+
+
+
+    </div>    
+    
+</body>
+</html>
+
+
+
